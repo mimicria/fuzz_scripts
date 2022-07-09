@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import os, subprocess
+import sys, os, subprocess
 
 path = sys.argv[1]
 dirlist = [f.path for f in os.scandir(path) if f.is_dir()]
