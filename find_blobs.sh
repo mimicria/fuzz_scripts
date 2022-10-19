@@ -1,0 +1,2 @@
+#!/bin/bash
+find . -type f | perl -lne 'print if -B' | xargs file | grep -vw -e 'ELF' -e 'RAR' -e 'Git' -e 'archive' -e 'image data' -e 'icon' -e 'color profile' -e 'RIFF' -e 'Font' -e 'bitmap' -e 'PDF' -e 'MIDI' -e 'empty' -e 'Document' -e 'XML' -e 'Image'
