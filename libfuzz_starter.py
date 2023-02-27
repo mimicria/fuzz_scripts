@@ -8,7 +8,6 @@ from sys import argv
 if len(argv) < 3:
     print ("Usage: python libfuzz_starter.py [path/libfuzzer_target] [time in seconds to fuzz without new cov]\n \
   For example: python libfuzz_starter.py ~/test 7200")
-    
     exit()
 
 fuzz_target = argv[1]
