@@ -5,7 +5,6 @@ import argparse
 import os
 from time import time
 from re import search,sub
-from sys import argv
 
 
 parser = argparse.ArgumentParser(description = 'LibFuzzer Time Checker')
