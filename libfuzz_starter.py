@@ -31,7 +31,7 @@ for line in iter(process.stdout.readline,''):
      line = line.replace("\n","")
      if 'cov:' in line:
           new_coverage = int(search(r'cov: (\d+)', line).group(1))
-          dt = round(time() - start_time,1)
+          dt = int(time() - start_time)
           ft = '%02i:%02i:%02i' % (dt//3600, (dt%3600)//60, dt%60)
           new_line = sub(r'(cov: (\d+))', r'\1 (last: '+ft+r')', line)
           print(new_line)
