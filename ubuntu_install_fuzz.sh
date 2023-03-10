@@ -8,7 +8,7 @@ fi
 
 echo "- Installing AFLplusplus"
 apt-get update > /dev/null
-apt-get install -y build-essential python3-dev python3-pip automake cmake git flex bison libglib2.0-dev libpixman-1-dev python3-setuptools libgtk-3-dev > /dev/null
+apt-get install -y build-essential python3-dev python3-pip curl automake cmake git flex bison libglib2.0-dev libpixman-1-dev python3-setuptools libgtk-3-dev > /dev/null
 apt-get install -y lld llvm llvm-dev clang > /dev/null
 apt-get install -y gcc-$(gcc --version|head -n1|sed 's/\..*//'|sed 's/.* //')-plugin-dev libstdc++-$(gcc --version|head -n1|sed 's/\..*//'|sed 's/.* //')-dev > /dev/null
 git clone https://github.com/AFLplusplus/AFLplusplus > /dev/null
