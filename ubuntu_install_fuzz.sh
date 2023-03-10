@@ -8,7 +8,7 @@ fi
 
 echo "- Installing AFLplusplus"
 apt-get update > /dev/null
-apt-get install -y build-essential python3-dev automake cmake git flex bison libglib2.0-dev libpixman-1-dev python3-setuptools libgtk-3-dev > /dev/null
+apt-get install -y build-essential python3-dev python3-pip automake cmake git flex bison libglib2.0-dev libpixman-1-dev python3-setuptools libgtk-3-dev > /dev/null
 apt-get install -y lld llvm llvm-dev clang > /dev/null
 apt-get install -y gcc-$(gcc --version|head -n1|sed 's/\..*//'|sed 's/.* //')-plugin-dev libstdc++-$(gcc --version|head -n1|sed 's/\..*//'|sed 's/.* //')-dev > /dev/null
 git clone https://github.com/AFLplusplus/AFLplusplus > /dev/null
@@ -26,7 +26,7 @@ rm -rf afl-utils > /dev/null
 echo "- Installing AFL-cov"
 cd ~ > /dev/null
 git clone https://github.com/mimicria/afl-cov.git > /dev/null
-mv -R afl-cov /opt/afl-cov > /dev/null
+mv afl-cov /opt/afl-cov > /dev/null
 # chmod ?
 ln -s /opt/afl-cov/afl-cov /bin/afl-cov
 
