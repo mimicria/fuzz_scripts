@@ -6,7 +6,7 @@ import os
 filename = "afl-fuzz.c"
 insertion_lines = "  u8 scrfile[PATH_MAX]; snprintf(scrfile,PATH_MAX,\"%s/fuzzer_screen\",afl->out_dir);  FILE* sfn = freopen(scrfile,\"w\",stdout); show_stats(afl); fclose(sfn);"
 temp_filename = f"{filename}.tmp"
-with open(filename, "r") as file, open(temp_filename, "w") as temp_file:
+with open(filename, "r", encoding='utf-8') as file, open(temp_filename, "w", encoding='utf-8') as temp_file:
     for line in file:
         temp_file.write(line)
         if "show_stats(afl);" in line:
