@@ -13,14 +13,13 @@ while True:
                     if 'afl-fuzz' not in ppname:
                         start_time = datetime.datetime.fromtimestamp(proc.create_time())
                         runtime = now - start_time
-                        mins = int(str(runtime).split(':')[1])
-                        print("Process:", pname, "PID:", proc.pid, "Parent:", ppname, "Started at:", start_time, "Runtime:", str(runtime))
-                        if mins > 0:
-                            try:
-                                proc.terminate()
-                                print("Killed...")
-                            except:
-                                pass
+                        sec = int(str(runtime).split(':')[2].split('.')[0])
+                        print("Process:", pname, "PID:", proc.pid, "Parent:", ppname, "Started at:", start_time, "Runtime:", str(runtime), end = '')
+                        if sec > 15:
+                            proc.terminate()
+                            print(" ::: Kill...")
+                        else:
+                            print(" ::: OK")
             except:
                 pass
     time.sleep(15)  # Wait for a second before checking again
