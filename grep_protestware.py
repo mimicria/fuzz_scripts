@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-# pip install python-magic
+# pip install python-magic tqdm
 
 import sys, os
 import magic
-from progress.bar import Bar
+from tqdm.auto import tqdm
 
 words_to_check = ["protest", "peacenotwar", "node-ipc", "украин", "мобилиз", "агресс", "фсб", "войн", "военн", "зеленск", 
                   "напал", "санкци", "преступ", "путин", "убив", "ukrain", "putin", "russia", "крым", "crimea", "militar", "invasion"]
@@ -11,7 +11,7 @@ words_to_check = ["protest", "peacenotwar", "node-ipc", "украин", "моб�
 def get_filelist(directory):
     fl = []
     mime = magic.Magic(mime=True)
-    for root, dirs, files in os.walk(directory):
+    for root, dirs, files in tqdm(os.walk(directory)):
     	for file in files:
             full_filename = root + "/" + file
             mime_type = mime.from_file(full_filename)
@@ -45,16 +45,15 @@ if len(sys.argv) < 2:
     print(f'Usage: python3 {os.path.basename(sys.argv[0])} <directory>')
     exit(0)
 path = sys.argv[1]
+print(f"Поиск текстовых файлов в каталоге `{path}`: ")
 file_list = get_filelist(path)
 found_log = []
 full_log = []
 full_log.append(f"# Каталог {path}, файлов: {len(file_list)}")
-bar = Bar('Поиск в файлах...', max = len(file_list))
-for file in file_list:
+print(f"Поиск совпадений...")
+for file in tqdm(file_list):
     found_log = contains_words(file, words_to_check)
     if len(found_log) > 0:
         full_log.extend(found_log)
-    bar.next()
-bar.finish()
 for log in full_log:
     print(log)
