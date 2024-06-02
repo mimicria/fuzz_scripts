@@ -48,6 +48,7 @@ path = sys.argv[1]
 file_list = get_filelist(path)
 found_log = []
 full_log = []
+full_log.append(f"# Каталог {path}, файлов: {len(file_list)}")
 bar = Bar('Поиск в файлах...', max = len(file_list))
 for file in file_list:
     found_log = contains_words(file, words_to_check)
@@ -55,8 +56,5 @@ for file in file_list:
         full_log.extend(found_log)
     bar.next()
 bar.finish()
-if len(full_log)  >  0:
-    for log in full_log:
-        print(log)
-else:
-    print("Ничего не найдено.")
+for log in full_log:
+    print(log)
