@@ -5,7 +5,7 @@ import sys, os
 import magic
 from progress.bar import Bar
 
-words_to_check = ["protest", "peacenotwar", "node-ipc", "украин", "мобилиз", "агресс", "фсб", "войн", "воен", "зеленск", 
+words_to_check = ["protest", "peacenotwar", "node-ipc", "украин", "мобилиз", "агресс", "фсб", "войн", "военн", "зеленск", 
                   "напал", "санкци", "преступ", "путин", "убив", "ukrain", "putin", "russia", "крым", "crimea", "militar", "invasion"]
 
 def get_filelist(directory):
