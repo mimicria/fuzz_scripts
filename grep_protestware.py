@@ -32,7 +32,7 @@ def contains_words(file_path, words):
                     if word in lower_line:
                         log.append(f"- `{word}` найдено в строке {line_number}: `{line.strip()}`")
         if log:
-            log.insert(0, f"## Файл  {file_path}")
+            log.insert(0, f"#### Файл {file_path}")
         return log
     except FileNotFoundError:
         if debug:
@@ -48,12 +48,12 @@ if len(sys.argv) < 2:
     print(f'Usage: python3 {os.path.basename(sys.argv[0])} <directory>')
     exit(0)
 path = sys.argv[1]
-print(f"Поиск текстовых файлов в каталоге `{path}`: ")
+print(f"[+] Поиск текстовых файлов в каталоге `{path}`: ")
 file_list = get_filelist(path)
 found_log = []
 full_log = []
-full_log.append(f"# Каталог {path}, файлов: {len(file_list)}")
-print(f"Поиск совпадений...")
+full_log.append(f"### Каталог {path}, файлов: {len(file_list)}")
+print(f"[+] Поиск совпадений...")
 for file in tqdm(file_list):
     found_log = contains_words(file, words_to_check)
     if len(found_log) > 0:
