@@ -7,6 +7,7 @@ from tqdm.auto import tqdm
 
 words_to_check = ["protest", "peacenotwar", "node-ipc", "украин", "мобилиз", "агресс", "фсб", "войн", "военн", "зеленск", 
                   "напал", "санкци", "преступ", "путин", "убив", "ukrain", "putin", "russia", "крым", "crimea", "militar", "invasion"]
+debug = False
 
 def get_filelist(directory):
     fl = []
@@ -34,10 +35,12 @@ def contains_words(file_path, words):
             log.insert(0, f"## Файл  {file_path}")
         return log
     except FileNotFoundError:
-        print(f"Файл {file_path} не считан.", file=sys.stderr)
+        if debug:
+            print(f"Файл {file_path} не считан.", file=sys.stderr)
         return log
     except UnicodeDecodeError:
-        print(f"Файл  {file_path} в непонятной кодировке.", file=sys.stderr)
+        if debug:
+            print(f"Файл  {file_path} в непонятной кодировке.", file=sys.stderr)
         return log
 
 
